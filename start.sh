@@ -42,7 +42,7 @@ mkdir -p /var/www/
 
 CONFFILE=/var/www/reviewboard/conf/settings_local.py
 
-if [[ ! -d /var/www/reviewboard ]]; then
+if [[ ! -f ${CONFFILE} ]]; then
     rb-site install --noinput \
         --domain-name="$DOMAIN" \
         --site-root="$SITE_ROOT" \
