@@ -4,13 +4,14 @@ services:
         image: postgres:alpine
         environment:
             - POSTGRES_USER=reviewboard
+            - POSTGRES_PASSWORD=reviewboard
     memcached:
         image: memcached:alpine
     reviewboard:
         build: ./
         volumes:
-            - /root/.ssh
-            - /media
+            - /projects/reviewboard/.ssh:/root/.ssh
+            - /projects/reviewboard/media:/media
         depends_on:
             - postgres
             - memcached
